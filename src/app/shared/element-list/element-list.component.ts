@@ -138,7 +138,7 @@ export class ElementListComponent implements OnInit {
    */
   private isPlayer(): boolean {
     // TODO pass to class Player
-    return !!(<Player>this.list[0]).Position;
+    return !!(<Player>this.list[0]).position;
   }
 
   /**

@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // Models
 import { Team } from './../../team-stats/team-list/shared/team.model';
-import { Player } from './../../player-technician/player/shared/player.model';
+import { Player } from './../../player-technician/player-list/shared/player.model';
 import { Technician } from './../../player-technician/technician-list/shared/technician-staff.model';
 
 @Component({

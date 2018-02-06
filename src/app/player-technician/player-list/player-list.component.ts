@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TeamsService } from './../../team-stats/team-list/shared/teams.service';
+import { Player } from './shared/player.model';
+
 @Component({
   selector: 'app-player-list',
   templateUrl: './player-list.component.html',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerListComponent implements OnInit {
 
-  constructor() { }
+  /**
+   * The list of the players
+   */
+  playersList: Array<Player>;
+
+  constructor(
+    private teamsService: TeamsService,
+  ) {
+  }
 
   ngOnInit() {
+    console.log(this.teamsService);
+    // make a copy of the teams
+    this.playersList = this.teamsService.currentTeamEdited.players.getElements();
   }
 
 }
