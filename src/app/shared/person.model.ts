@@ -1,4 +1,4 @@
-import { Team } from './team.model';
+import { Team } from './../team/shared/team.model';
 
 export interface Person {
   /**
@@ -9,12 +9,12 @@ export interface Person {
   /**
    * Name of the person
    */
-  name;
+  name: string;
 
   /**
    * Surname of the person
    */
-  surname;
+  surname: string;
 
   /**
    * Birth date of the person
