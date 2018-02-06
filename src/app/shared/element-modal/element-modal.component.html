@@ -1,0 +1,18 @@
+  <!-- render team template -->
+  <div ng-if="Team.isATeam(element)">
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.name" placeholder="Name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.flag" placeholder="Flag Picture URL">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.shield" placeholder="Shield Picture URL">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button (click)="closeDialog()">CANCEL</button>
+  <button mat-raised-button [mat-dialog-close]="element" color="primary">ADD</button>
