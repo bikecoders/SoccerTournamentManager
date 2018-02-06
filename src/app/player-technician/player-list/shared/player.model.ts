@@ -1,6 +1,7 @@
+import { Team } from './../../../team-stats/team-list/shared/team.model';
 import { Person } from './../../../shared/person.model';
 
-export interface Player extends Person {
+export class Player extends Person {
   /**
    * Picture of the player
    */
@@ -14,7 +15,7 @@ export interface Player extends Person {
   /**
    * Position of the player
    */
-  Position: 'Goal Keeper' | DefenderPosition | MidfielderPosition | ForwardPosition;
+  position: 'Goal Keeper' | DefenderPosition | MidfielderPosition | ForwardPosition;
 
   /**
    * A boolean to determinate if a player if titular or not
@@ -22,6 +23,33 @@ export interface Player extends Person {
    * undefined | false - means that is not
    */
   Titular?: boolean;
+
+  /**
+   * Constructor, all the parameters are optional a default value of null will be put instead
+   *
+   * @param team
+   * @param name
+   * @param surname
+   * @param birthDate
+   * @param picture
+   * @param number
+   * @param position
+   */
+  constructor(
+    team: Team,
+    name?: string,
+    surname?: string,
+    birthDate?: Date,
+    picture?: string,
+    number?: Number,
+    position?: 'Goal Keeper' | DefenderPosition | MidfielderPosition | ForwardPosition) {
+
+    super(team, name, surname, birthDate);
+
+    this.picture = picture || null;
+    this.number = number || null;
+    this.position = position || null;
+  }
 }
 
 /**
