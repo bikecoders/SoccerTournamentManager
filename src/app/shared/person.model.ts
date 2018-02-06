@@ -1,4 +1,4 @@
-import { Team } from './../team/shared/team.model';
+import { Team } from './../team-stats/team-list/shared/team.model';
 
 export interface Person {
   /**

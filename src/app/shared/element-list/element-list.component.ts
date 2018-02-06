@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 // Models
 import { Player } from './../../player/shared/player.model';
-import { Team } from './../../team/shared/team.model';
+import { Team } from './../../team-stats/team-list/shared/team.model';
 import { Technician } from '../../technician/shared/technician-staff.model';
 import { CrudList } from '../crud-list';
 

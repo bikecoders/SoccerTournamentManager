@@ -3,7 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // Models
-import { Team } from '../../team/shared/team.model';
+import { Team } from './../../team-stats/team-list/shared/team.model';
 import { Player } from './../../player/shared/player.model';
 import { Technician } from '../../technician/shared/technician-staff.model';
 
