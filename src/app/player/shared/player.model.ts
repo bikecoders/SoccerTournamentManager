@@ -1,4 +1,4 @@
-import { Person } from './person.model';
+import { Person } from '../../shared/person.model';
 
 export interface Player extends Person {
   /**
