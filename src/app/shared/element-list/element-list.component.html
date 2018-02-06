@@ -1,0 +1,10 @@
+<mat-list>
+  <mat-list-item *ngFor="let element of list; let i = index;">
+    <img matListAvatar src="{{getImage(i)}}" alt="flag">
+    <h3 matLine> {{getName(i)}} </h3>
+  </mat-list-item>
+</mat-list>
+
+<button mat-fab (click)="newElementModal()">
+  <mat-icon aria-label="Add a new element">{{icon}}</mat-icon>
+</button>
