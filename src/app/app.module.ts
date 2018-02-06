@@ -12,10 +12,12 @@ import { SharedModule } from './shared/shared.module';
 import { TeamModule } from './team/team.module';
 import { PlayerModule } from './player/player.module';
 import { TechnicianModule } from './technician/technician.module';
+import { TeamStatsComponent } from './team-stats/team-stats.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeamStatsComponent
   ],
   imports: [
     AppRoutingModule,
