@@ -8,9 +8,13 @@ import { PlayersService } from './player/shared/players.service';
 import { TechnicianListComponent } from './technician-list/technician-list.component';
 import { TechniciansService } from './technician-list/shared/technicians.service';
 
+// Material
+import { MatTabsModule } from '@angular/material/tabs';
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatTabsModule
   ],
   declarations: [
     PlayerTechnicianComponent,
