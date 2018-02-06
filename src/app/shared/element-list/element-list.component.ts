@@ -1,5 +1,6 @@
 import { ElementModalComponent } from './../element-modal/element-modal.component';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Material
 import { MatDialog } from '@angular/material/dialog';
@@ -27,11 +28,20 @@ export class ElementListComponent implements OnInit {
    */
   @Input() icon: string;
 
+  /**
+   * The route to navigate when the user clicks on item of the list
+   */
+  @Input() navigationUrl: string;
+
   constructor(
-    public dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
     // Default icon
     this.icon = 'person_add';
+
+    // Will be null if not provided
+    this.navigationUrl = null;
   }
 
   ngOnInit() {
@@ -106,6 +116,16 @@ export class ElementListComponent implements OnInit {
         this.list.push(newElement);
       }
     });
+  }
+
+  /**
+   * When the user clicks an element of the list, navigate to the
+   * route provided. Will not do anything if no route was provided
+   */
+  navigate() {
+    if (this.navigationUrl) {
+      this.router.navigateByUrl(this.navigationUrl);
+    }
   }
 
   /**
