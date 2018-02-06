@@ -4,8 +4,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // Models
 import { Team } from './../../team-stats/team-list/shared/team.model';
-import { Player } from './../../player/shared/player.model';
-import { Technician } from '../../technician/shared/technician-staff.model';
+import { Player } from './../../player-technician/player/shared/player.model';
+import { Technician } from './../../player-technician/technician-list/shared/technician-staff.model';
 
 @Component({
   selector: 'app-element-modal',

@@ -10,9 +10,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
 import { TeamStatsModule } from './team-stats/team-stats.module';
-
-import { PlayerModule } from './player/player.module';
-import { TechnicianModule } from './technician/technician.module';
+import { PlayerTechnicianModule } from './player-technician/player-technician.module';
 
 @NgModule({
   declarations: [
@@ -28,8 +26,7 @@ import { TechnicianModule } from './technician/technician.module';
     MatToolbarModule,
 
     TeamStatsModule,
-    PlayerModule,
-    TechnicianModule,
+    PlayerTechnicianModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

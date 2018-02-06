@@ -6,10 +6,9 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 
 // Models
-import { Player } from './../../player/shared/player.model';
+import { Player } from './../../player-technician/player/shared/player.model';
 import { Team } from './../../team-stats/team-list/shared/team.model';
-import { Technician } from '../../technician/shared/technician-staff.model';
-import { CrudList } from '../crud-list';
+import { Technician } from './../../player-technician/technician-list/shared/technician-staff.model';
 
 @Component({
   selector: 'app-element-list',

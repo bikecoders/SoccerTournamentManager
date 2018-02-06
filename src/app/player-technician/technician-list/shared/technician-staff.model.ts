@@ -1,4 +1,4 @@
-import { Person } from './../../shared/person.model';
+import { Person } from './../../../shared/person.model';
 
 export interface Technician extends Person {
   /**
