@@ -50,6 +50,15 @@ export class Player extends Person {
     this.number = number || null;
     this.position = position || null;
   }
+
+  /**
+   * Function to know given an element if is a Player instance
+   *
+   * @param element Element to know if is an element
+   */
+  static isAPlayer(element: Player): boolean {
+    return element instanceof Player;
+  }
 }
 
 /**
