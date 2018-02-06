@@ -2,11 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PlayerTechnicianComponent } from './player-technician.component';
 
-import { PlayerListComponent } from './player/player-list.component';
-import { PlayersService } from './player/shared/players.service';
-
+import { PlayerListComponent } from './player-list/player-list.component';
 import { TechnicianListComponent } from './technician-list/technician-list.component';
-import { TechniciansService } from './technician-list/shared/technicians.service';
+
+import { SharedModule } from './../shared/shared.module';
 
 // Material
 import { MatTabsModule } from '@angular/material/tabs';
@@ -14,13 +13,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   imports: [
     CommonModule,
-    MatTabsModule
+    MatTabsModule,
+    SharedModule
   ],
   declarations: [
     PlayerTechnicianComponent,
     PlayerListComponent,
     TechnicianListComponent
   ],
-  providers: [PlayersService, TechniciansService]
 })
 export class PlayerTechnicianModule { }

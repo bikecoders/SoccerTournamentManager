@@ -1,12 +1,12 @@
+import { TeamsService } from './../../team-stats/team-list/shared/teams.service';
 import { ElementModalComponent } from './../element-modal/element-modal.component';
-import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 // Material
 import { MatDialog } from '@angular/material/dialog';
 
 // Models
-import { Player } from './../../player-technician/player/shared/player.model';
+import { Player } from './../../player-technician/player-list/shared/player.model';
 import { Team } from './../../team-stats/team-list/shared/team.model';
 import { Technician } from './../../player-technician/technician-list/shared/technician-staff.model';
 
@@ -28,19 +28,19 @@ export class ElementListComponent implements OnInit {
   @Input() icon: string;
 
   /**
-   * The route to navigate when the user clicks on item of the list
+   * Event when clicking an element of the list
    */
-  @Input() navigationUrl: string;
+  @Output() actionOnItem: EventEmitter<Team | Player | Technician>;
 
   constructor(
     private dialog: MatDialog,
-    private router: Router
+    private teamsService: TeamsService
   ) {
     // Default icon
     this.icon = 'person_add';
 
-    // Will be null if not provided
-    this.navigationUrl = null;
+    // init event emitter
+    this.actionOnItem = new EventEmitter<Team | Player | Technician>();
   }
 
   ngOnInit() {
@@ -71,7 +71,6 @@ export class ElementListComponent implements OnInit {
       return (<Team>element).flag;
     }
 
-    // TODO modify to adopt classes
     // Player
     if (this.isPlayer()) {
       return (<Player>this.list[index]).picture;
@@ -101,6 +100,11 @@ export class ElementListComponent implements OnInit {
       emptyElement = new Team();
     }
 
+    // Set the New element as a player
+    if (Player.isAPlayer(<Player> currentElementType)) {
+      emptyElement = new Player(this.teamsService.currentTeamEdited);
+    }
+
     // Open the dialog with the new empty element
     const dialogRef = this.dialog.open(ElementModalComponent, {
       data: emptyElement,
@@ -118,13 +122,14 @@ export class ElementListComponent implements OnInit {
   }
 
   /**
-   * When the user clicks an element of the list, navigate to the
-   * route provided. Will not do anything if no route was provided
+   * Emit a signal when an element of the list was clicked
+   *
+   * @param element Element clicked
    */
-  navigate() {
-    if (this.navigationUrl) {
-      this.router.navigateByUrl(this.navigationUrl);
-    }
+  clickOnItem(element: Team | Player | Technician) {
+    console.log('Click on element LIST', element);
+
+    this.actionOnItem.emit(element);
   }
 
   /**
@@ -138,8 +143,7 @@ export class ElementListComponent implements OnInit {
    * Function to know if the element treated here is a Player
    */
   private isPlayer(): boolean {
-    // TODO pass to class Player
-    return !!(<Player>this.list[0]).Position;
+    return this.list[0] instanceof Player;
   }
 
   /**

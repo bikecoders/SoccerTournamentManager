@@ -10,6 +10,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ElementModalComponent } from './element-modal/element-modal.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule  } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -20,7 +23,10 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   declarations: [ElementListComponent, ElementModalComponent],
   entryComponents: [ElementModalComponent],
