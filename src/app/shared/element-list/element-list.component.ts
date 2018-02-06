@@ -1,3 +1,4 @@
+import { TeamsService } from './../../team-stats/team-list/shared/teams.service';
 import { ElementModalComponent } from './../element-modal/element-modal.component';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
@@ -32,7 +33,8 @@ export class ElementListComponent implements OnInit {
   @Output() actionOnItem: EventEmitter<Team | Player | Technician>;
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private teamsService: TeamsService
   ) {
     // Default icon
     this.icon = 'person_add';
@@ -69,7 +71,6 @@ export class ElementListComponent implements OnInit {
       return (<Team>element).flag;
     }
 
-    // TODO modify to adopt classes
     // Player
     if (this.isPlayer()) {
       return (<Player>this.list[index]).picture;
@@ -97,6 +98,11 @@ export class ElementListComponent implements OnInit {
     // Set the New element as a Team
     if (Team.isATeam(<Team> currentElementType)) {
       emptyElement = new Team();
+    }
+
+    // Set the New element as a player
+    if (Player.isAPlayer(<Player> currentElementType)) {
+      emptyElement = new Player(this.teamsService.currentTeamEdited);
     }
 
     // Open the dialog with the new empty element
@@ -137,8 +143,7 @@ export class ElementListComponent implements OnInit {
    * Function to know if the element treated here is a Player
    */
   private isPlayer(): boolean {
-    // TODO pass to class Player
-    return !!(<Player>this.list[0]).position;
+    return this.list[0] instanceof Player;
   }
 
   /**

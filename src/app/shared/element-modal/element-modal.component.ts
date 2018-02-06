@@ -24,11 +24,19 @@ export class ElementModalComponent implements OnInit {
    */
   constructor(
     private dialogRef: MatDialogRef<ElementModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public element: Team | Player | Technician
+    @Inject(MAT_DIALOG_DATA) public element: Team | Player | Technician | any
   ) { }
 
   ngOnInit() {
-    console.log(this.element);
+    console.log('New Elemet on modal', this.element, );
+  }
+
+  isTeam() {
+    return Team.isATeam(<Team> this.element);
+  }
+
+  isPlayer() {
+    return Player.isAPlayer(<Player> this.element);
   }
 
   /**
@@ -39,7 +47,7 @@ export class ElementModalComponent implements OnInit {
   }
 
   addNewElement() {
-    console.log('new element to add',this.element);
+    console.log('new element to add', this.element);
   }
 
 }
