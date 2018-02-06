@@ -1,6 +1,5 @@
   <!-- render team template -->
-  <div ng-if="Team.isATeam(element)">
-
+  <div *ngIf="isTeam()">
     <mat-form-field>
       <input matInput [(ngModel)]="element.name" placeholder="Name">
     </mat-form-field>
@@ -12,6 +11,37 @@
     <mat-form-field>
       <input matInput [(ngModel)]="element.shield" placeholder="Shield Picture URL">
     </mat-form-field>
+  </div>
+
+  <div *ngIf="isPlayer()">
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.name" placeholder="Name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.surname" placeholder="Surname">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="element.birthDate" placeholder="Choose a Birth Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.picture" placeholder="Picture URL">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="number" matInput [(ngModel)]="element.number" placeholder="Player Number">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.position" placeholder="Player Position">
+    </mat-form-field>
+
+    <mat-checkbox>is Titular?</mat-checkbox>
+
   </div>
 
   <button mat-raised-button (click)="closeDialog()">CANCEL</button>

@@ -1,3 +1,7 @@
+import { CrudList } from './../../../shared/crud-list';
+import { Player, ForwardPosition } from './../../../player-technician/player-list/shared/player.model';
+import { Technician } from './../../../player-technician/technician-list/shared/technician-staff.model';
+
 export class Team {
   /**
    * The name of the team
@@ -17,6 +21,16 @@ export class Team {
   shield: string;
 
   /**
+   * Players of the this team
+   */
+  players: CrudList<Player>;
+
+  /**
+   * Technicians of this team
+   */
+  technician: CrudList<Technician>;
+
+  /**
    * Constructor, all the parameters are optional a default value of '' will be put instead
    *
    * @param name
@@ -27,6 +41,10 @@ export class Team {
     this.name = name || '';
     this.flag = flag || '';
     this.shield = shield || '';
+
+    // Init the arrays
+    this.players = new CrudList<Player>();
+    this.technician = new CrudList<Technician>();
   }
 
   /**

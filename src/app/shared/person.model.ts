@@ -1,6 +1,6 @@
-import { Team } from './../team/shared/team.model';
+import { Team } from './../team-stats/team-list/shared/team.model';
 
-export interface Person {
+export class Person {
   /**
    * The team that this player belongs
    */
@@ -20,4 +20,23 @@ export interface Person {
    * Birth date of the person
    */
   birthDate: Date;
+
+  /**
+   * Constructor, all the parameters are optional a default value of null will be put instead
+   *
+   * @param team
+   * @param name
+   * @param surname
+   * @param birthDate
+   */
+  constructor(
+    team: Team,
+    name?: string,
+    surname?: string,
+    birthDate?: Date) {
+    this.team = team;
+    this.name = name || null;
+    this.surname = surname || null;
+    this.birthDate = birthDate || null;
+  }
 }
