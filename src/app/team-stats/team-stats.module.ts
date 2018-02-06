@@ -9,7 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 // Material
 import { MatTabsModule } from '@angular/material/tabs';
 
-
 @NgModule({
   imports: [
     CommonModule,
