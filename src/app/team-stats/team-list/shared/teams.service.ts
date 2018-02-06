@@ -8,13 +8,39 @@ import { CrudList } from './../../../shared/crud-list';
 @Injectable()
 export class TeamsService extends CrudList<Team> {
 
+  /**
+   * Players of the this team
+   */
   players: CrudList<Player>;
+
+  /**
+   * Technicians of this team
+   */
   technician: CrudList<Technician>;
+
+  /**
+   * When you are editing a team this property will tell you
+   * what team is being edited
+   */
+  currentTeamEdited: Team;
 
   constructor() {
     super();
 
+    // Init the arrays
+    this.players = new CrudList <Player>();
+    this.technician = new CrudList <Technician>();
+
     this.initFakeData();
+  }
+
+  /**
+   * Setter for the property currentTeamEdited
+   *
+   * @param team The team that is being edited
+   */
+  setCurrentTeam(team: Team) {
+    this.currentTeamEdited = team;
   }
 
   /**
