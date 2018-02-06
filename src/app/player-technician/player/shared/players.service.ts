@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { CrudList } from '../../shared/crud-list';
 import { Player } from './player.model';
+import { CrudList } from './../../../shared/crud-list';
 
 @Injectable()
 export class PlayersService extends CrudList<Player> {
