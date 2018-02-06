@@ -15,11 +15,17 @@ export class ElementListComponent implements OnInit {
    */
   @Input() list;
 
+  /**
+   * Material Icon ID to render
+   */
+  @Input() icon: string;
+
   constructor() {
+    // Default icon
+    this.icon = 'person_add';
   }
 
   ngOnInit() {
-    console.log('Is team?', this.isTeam());
   }
 
   /**
