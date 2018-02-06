@@ -1,7 +1,14 @@
+import { ElementModalComponent } from './../element-modal/element-modal.component';
+import { Component, OnInit, Input } from '@angular/core';
+
+// Material
+import { MatDialog } from '@angular/material/dialog';
+
+// Models
 import { Player } from './../../player/shared/player.model';
 import { Team } from './../../team/shared/team.model';
-import { Component, OnInit, Input } from '@angular/core';
 import { Technician } from '../../technician/shared/technician-staff.model';
+import { CrudList } from '../crud-list';
 
 @Component({
   selector: 'app-element-list',
@@ -20,7 +27,9 @@ export class ElementListComponent implements OnInit {
    */
   @Input() icon: string;
 
-  constructor() {
+  constructor(
+    public dialog: MatDialog
+  ) {
     // Default icon
     this.icon = 'person_add';
   }
@@ -65,6 +74,38 @@ export class ElementListComponent implements OnInit {
       // TODO find a default profile picture
       return '';
     }
+  }
+
+  /**
+   * Function to open a dialog with the intentions to create a new element
+   */
+  newElementModal() {
+    // just to know the type of element managed here
+    const currentElementType = this.list[0];
+
+    // To set the type of element. Will verify the type of element and will create a
+    // new element of that type
+    let emptyElement;
+
+    // Set the New element as a Team
+    if (Team.isATeam(<Team> currentElementType)) {
+      emptyElement = new Team();
+    }
+
+    // Open the dialog with the new empty element
+    const dialogRef = this.dialog.open(ElementModalComponent, {
+      data: emptyElement,
+    });
+
+    // When the dialog is closed
+    dialogRef.afterClosed().subscribe(newElement => {
+      // If a element was provided
+      if (newElement) {
+        console.log('New Element Added', newElement);
+        // Add that element to the list
+        this.list.push(newElement);
+      }
+    });
   }
 
   /**
