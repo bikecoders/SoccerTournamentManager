@@ -13,7 +13,7 @@ export class ElementListComponent implements OnInit {
   /**
    * List of elements to show
    */
-  @Input() list;
+  @Input() list: Array<Team | Player | Technician>;
 
   /**
    * Material Icon ID to render
@@ -45,19 +45,24 @@ export class ElementListComponent implements OnInit {
    * @param index index of the element to get
    */
   getImage(index: number) {
+    // The element to get the image
+    const element = this.list[index];
+
     // Teams
-    if (this.isTeam()) {
-      return (<Team>this.list[index]).flag;
+    if (Team.isATeam(<Team> element)) {
+      return (<Team>element).flag;
     }
 
+    // TODO modify to adopt classes
     // Player
-    if (this.isTeam()) {
+    if (this.isPlayer()) {
       return (<Player>this.list[index]).picture;
     }
 
+    // TODO modify to adopt classes
     // Technician
-    if (this.isTeam()) {
-      // TODO find a defualt profile picture
+    if (this.isTechnician()) {
+      // TODO find a default profile picture
       return '';
     }
   }
@@ -66,13 +71,14 @@ export class ElementListComponent implements OnInit {
    * Function to know if the element treated here is a Team
    */
   private isTeam(): boolean {
-    return !!(<Team>this.list[0]).shield;
+    return this.list[0] instanceof Team;
   }
 
   /**
    * Function to know if the element treated here is a Player
    */
   private isPlayer(): boolean {
+    // TODO pass to class Player
     return !!(<Player>this.list[0]).Position;
   }
 
@@ -80,6 +86,7 @@ export class ElementListComponent implements OnInit {
    * Function to know if the element treated here is a Technician
    */
   private isTechnician(): boolean {
+    // TODO pass to class Technician
     return !!(<Technician>this.list[0]).role;
   }
 }
