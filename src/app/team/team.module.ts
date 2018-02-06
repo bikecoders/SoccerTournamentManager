@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TeamsComponent } from './teams/teams.component';
+import { TeamsComponent } from './teams-list/teams.component';
 import { TeamsService } from './shared/teams.service';
 
 @NgModule({
