@@ -26,4 +26,12 @@ export class PlayerListComponent implements OnInit {
     this.playersList = this.teamsService.currentTeamEdited.players.getElements();
   }
 
+
+  /**
+   * Return type of element of this list
+   */
+  getType(): string {
+    return Player.name;
+  }
+
 }
