@@ -41,4 +41,11 @@ export class TeamListComponent implements OnInit {
     this.router.navigateByUrl('edit-team');
   }
 
+  /**
+   * Return type of element of this list
+   */
+  getType(): string {
+    return Team.name;
+  }
+
 }
