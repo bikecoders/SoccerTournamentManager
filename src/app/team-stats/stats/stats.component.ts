@@ -31,10 +31,15 @@ export class StatsComponent implements OnInit {
    */
   nonTitularPlayers: Number | String;
 
+  /**
+   * Average of non titular players on all the teams
+   */
+  AverageNonTitularPlayers: Number | String;
+
   constructor(
     private teamsService: TeamsService
   ) {
-    this.nonTitularPlayers = 'calculating...';
+    this.nonTitularPlayers = this.AverageNonTitularPlayers = 'calculating...';
 
     // Find the youngest player
     this.calculateYoungestPlayer()
@@ -51,7 +56,12 @@ export class StatsComponent implements OnInit {
     // Calculate non titular players
     this.calculateNonTitularPlayers()
       .subscribe(
-        (nonTitulars: Number) => this.nonTitularPlayers = nonTitulars
+        (nonTitulars: number) => {
+          this.nonTitularPlayers = nonTitulars;
+
+          // Calculate average of non titulars players per team
+          this.AverageNonTitularPlayers = nonTitulars / this.howManyTeamsAreRegistered();
+        }
       );
 
   }
@@ -62,14 +72,14 @@ export class StatsComponent implements OnInit {
   /**
    * How many teams are registered
    */
-  howManyTeamsAreRegistered(): Number {
+  howManyTeamsAreRegistered(): number {
     return this.teamsService.getElements().length;
   }
 
   /**
    * Return how many players are registered
    */
-  howManyPlayersWillPlay(): Number {
+  howManyPlayersWillPlay(): number {
     // Iterate teams
     return this.teamsService.getElements()
     // Return the amount of players of a team
@@ -119,7 +129,7 @@ export class StatsComponent implements OnInit {
    *
    * Observables was used because flatMap is not native yet
    */
-  calculateNonTitularPlayers(): Observable<Number> {
+  calculateNonTitularPlayers(): Observable<number> {
     return this.allPlayers()
       // Sum how many non titulars players are
       .reduce((nonTitular: number, currentPlayer: Player) => {

@@ -10,7 +10,7 @@ export class Player extends Person {
   /**
    * Number of the player
    */
-  number: Number;
+  number: number;
 
   /**
    * Position of the player
@@ -41,7 +41,7 @@ export class Player extends Person {
     surname?: string,
     birthDate?: Date,
     picture?: string,
-    number?: Number,
+    number?: number,
     position?: 'Goal Keeper' | DefenderPosition | MidfielderPosition | ForwardPosition,
     titular?: boolean) {
 
