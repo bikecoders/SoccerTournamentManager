@@ -22,7 +22,7 @@ export class Player extends Person {
    * true - means that it is
    * undefined | false - means that is not
    */
-  Titular?: boolean;
+  titular?: boolean;
 
   /**
    * Constructor, all the parameters are optional a default value of null will be put instead
@@ -42,13 +42,15 @@ export class Player extends Person {
     birthDate?: Date,
     picture?: string,
     number?: Number,
-    position?: 'Goal Keeper' | DefenderPosition | MidfielderPosition | ForwardPosition) {
+    position?: 'Goal Keeper' | DefenderPosition | MidfielderPosition | ForwardPosition,
+    titular?: boolean) {
 
     super(team, name, surname, birthDate);
 
     this.picture = picture || null;
     this.number = number || null;
     this.position = position || null;
+    this.titular = titular || false;
   }
 }
 
