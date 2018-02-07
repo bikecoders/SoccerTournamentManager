@@ -77,7 +77,8 @@ export class TeamsService extends CrudList<Team> {
       new Date(1920, 2, 8),
       'assets/img/fakeTeams/germany/player1.jpg',
       7,
-      ForwardPosition.winger
+      ForwardPosition.winger,
+      true
     );
 
     this.getElements()[1].players.newElement(player1Germany);
@@ -87,8 +88,8 @@ export class TeamsService extends CrudList<Team> {
     // Italy Only
     const technician1Italy = new Technician(
       this.getElements()[1],
-      'Heinz',
-      'Stucke',
+      'Technical',
+      'Man',
       new Date(1920, 2, 8),
       'Venezuelan',
       TechnicalStaffRoles.Medic
