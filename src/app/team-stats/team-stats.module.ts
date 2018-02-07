@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 
 // Material
 import { MatTabsModule } from '@angular/material/tabs';
+import { StatsComponent } from './stats/stats.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     SharedModule,
     MatTabsModule
   ],
-  declarations: [TeamStatsComponent, TeamListComponent],
+  declarations: [TeamStatsComponent, TeamListComponent, StatsComponent],
   providers: [TeamsService],
 })
 export class TeamStatsModule { }
