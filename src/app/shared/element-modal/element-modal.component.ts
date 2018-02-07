@@ -28,15 +28,28 @@ export class ElementModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('New Elemet on modal', this.element, );
+    console.log('New Element on modal', this.element );
   }
 
+  /**
+   * The element is a TEAM instance?
+   */
   isTeam() {
-    return Team.isATeam(<Team> this.element);
+    return this.element instanceof Team;
   }
 
+  /**
+   * The element is a Player instance?
+   */
   isPlayer() {
-    return Player.isAPlayer(<Player> this.element);
+    return this.element instanceof Player;
+  }
+
+  /**
+   * The element is a Technician instance?
+   */
+  isTechnician() {
+    return this.element instanceof Technician;
   }
 
   /**
@@ -44,10 +57,6 @@ export class ElementModalComponent implements OnInit {
    */
   closeDialog() {
     this.dialogRef.close();
-  }
-
-  addNewElement() {
-    console.log('new element to add', this.element);
   }
 
 }

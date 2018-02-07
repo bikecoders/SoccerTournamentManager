@@ -81,9 +81,8 @@ export class ElementListComponent implements OnInit {
         return (<Player>element).picture;
 
       // Technician
-      // case Technician.name:
-        // TODO find a default profile picture
-        // return '';
+      case Technician.name:
+        return 'assets/img/default-profile.png';
     }
   }
 
@@ -108,9 +107,9 @@ export class ElementListComponent implements OnInit {
         break;
 
       // Technician
-      // case Technician.name:
-        // TODO Pass a new class of Technician empty
-        // return undefined;
+      case Technician.name:
+        emptyElement = new Technician(this.teamsService.currentTeamEdited);
+        break;
     }
 
     // Open the dialog with the new empty element

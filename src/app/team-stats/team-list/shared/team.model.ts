@@ -46,13 +46,4 @@ export class Team {
     this.players = new CrudList<Player>();
     this.technician = new CrudList<Technician>();
   }
-
-  /**
-   * Function to know given an element if is a Team instance
-   *
-   * @param element Element to know if is an element
-   */
-  static isATeam(element: Team): boolean {
-    return element instanceof Team;
-  }
 }
