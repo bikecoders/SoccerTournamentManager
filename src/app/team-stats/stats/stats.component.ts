@@ -21,12 +21,24 @@ export class StatsComponent implements OnInit {
    */
   youngestPlayer: Player;
 
+  /**
+   * Variable to store the youngest player asynchronously
+   */
+  oldestPlayer: Player;
+
   constructor(
     private teamsService: TeamsService
   ) {
-    this.calculateWhoIsTheYoungestPlayer()
+    // Find the youngest player
+    this.calculateYoungestPlayer()
     .subscribe(
       (youngestPlayer: Player) => this.youngestPlayer = youngestPlayer
+    );
+
+    // Find the oldest player
+    this.calculateOldestPlayer()
+    .subscribe(
+      (oldestPlayer: Player) => this.oldestPlayer = oldestPlayer
     );
   }
 
@@ -57,7 +69,7 @@ export class StatsComponent implements OnInit {
    *
    * Observables was used because flatMap is not native yet
    */
-  calculateWhoIsTheYoungestPlayer(): Observable<Player> {
+  calculateYoungestPlayer(): Observable<Player> {
     // Iterate teams
     return Observable.of(this.teamsService.getElements())
       // Iterate teams as a single element
@@ -68,6 +80,23 @@ export class StatsComponent implements OnInit {
       .reduce((youngestPlayer: Player, currentPlayer: Player) => {
         if (youngestPlayer.birthDate > currentPlayer.birthDate) {
           return youngestPlayer;
+        }
+
+        return currentPlayer;
+      });
+  }
+
+  calculateOldestPlayer(): Observable<Player> {
+    // Iterate teams
+    return Observable.of(this.teamsService.getElements())
+      // Iterate teams as a single element
+      .switchMap((teams: Array<Team>) => teams)
+      // Iterate the players of the Team as a single element
+      .switchMap((team: Team) => team.players.getElements())
+      // Calculate the OLDEST player
+      .reduce((oldestPlayer: Player, currentPlayer: Player) => {
+        if (oldestPlayer.birthDate < currentPlayer.birthDate) {
+          return oldestPlayer;
         }
 
         return currentPlayer;
