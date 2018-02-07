@@ -1,3 +1,4 @@
+import { TeamsService } from './../team-list/shared/teams.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StatsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private teamsService: TeamsService
+  ) { }
 
   ngOnInit() {
+  }
+
+  /**
+   * How many teams are registered
+   */
+  howManyTeamsAreRegistered(): Number {
+    return this.teamsService.getElements().length;
   }
 
 }
