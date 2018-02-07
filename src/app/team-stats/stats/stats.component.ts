@@ -26,20 +26,34 @@ export class StatsComponent implements OnInit {
    */
   oldestPlayer: Player;
 
+  /**
+   * Number of non titular players are
+   */
+  nonTitularPlayers: Number | String;
+
   constructor(
     private teamsService: TeamsService
   ) {
+    this.nonTitularPlayers = 'calculating...';
+
     // Find the youngest player
     this.calculateYoungestPlayer()
-    .subscribe(
-      (youngestPlayer: Player) => this.youngestPlayer = youngestPlayer
-    );
+      .subscribe(
+        (youngestPlayer: Player) => this.youngestPlayer = youngestPlayer
+      );
 
     // Find the oldest player
     this.calculateOldestPlayer()
-    .subscribe(
-      (oldestPlayer: Player) => this.oldestPlayer = oldestPlayer
-    );
+      .subscribe(
+        (oldestPlayer: Player) => this.oldestPlayer = oldestPlayer
+      );
+
+    // Calculate non titular players
+    this.calculateNonTitularPlayers()
+      .subscribe(
+        (nonTitulars: Number) => this.nonTitularPlayers = nonTitulars
+      );
+
   }
 
   ngOnInit() {
@@ -70,12 +84,8 @@ export class StatsComponent implements OnInit {
    * Observables was used because flatMap is not native yet
    */
   calculateYoungestPlayer(): Observable<Player> {
-    // Iterate teams
-    return Observable.of(this.teamsService.getElements())
-      // Iterate teams as a single element
-      .switchMap((teams: Array<Team>) => teams)
-      // Iterate the players of the Team as a single element
-      .switchMap((team: Team) => team.players.getElements())
+    // Iterate players
+    return this.allPlayers()
       // Calculate the youngest player
       .reduce((youngestPlayer: Player, currentPlayer: Player) => {
         if (youngestPlayer.birthDate > currentPlayer.birthDate) {
@@ -86,13 +96,14 @@ export class StatsComponent implements OnInit {
       });
   }
 
+  /**
+   * Find the oldest player in all teams.
+   *
+   * Observables was used because flatMap is not native yet
+   */
   calculateOldestPlayer(): Observable<Player> {
-    // Iterate teams
-    return Observable.of(this.teamsService.getElements())
-      // Iterate teams as a single element
-      .switchMap((teams: Array<Team>) => teams)
-      // Iterate the players of the Team as a single element
-      .switchMap((team: Team) => team.players.getElements())
+    // Iterate players
+    return this.allPlayers()
       // Calculate the OLDEST player
       .reduce((oldestPlayer: Player, currentPlayer: Player) => {
         if (oldestPlayer.birthDate < currentPlayer.birthDate) {
@@ -103,4 +114,31 @@ export class StatsComponent implements OnInit {
       });
   }
 
+  /**
+   * Calculate How Many non Players Are.
+   *
+   * Observables was used because flatMap is not native yet
+   */
+  calculateNonTitularPlayers(): Observable<Number> {
+    return this.allPlayers()
+      // Sum how many non titulars players are
+      .reduce((nonTitular: number, currentPlayer: Player) => {
+        // If the players is titular just return, else, sum one and return
+        return currentPlayer.titular ? nonTitular : ++nonTitular;
+      }, 0);
+  }
+
+  /**
+   * Iterate all players of the tournament
+   *
+   * Observables was used because flatMap is not native yet
+   */
+  private allPlayers(): Observable<Player> {
+    // Iterate teams
+    return Observable.of(this.teamsService.getElements())
+      // Iterate teams as a single element
+      .switchMap((teams: Array<Team>) => teams)
+      // Iterate the players of the Team as a single element
+      .switchMap((team: Team) => team.players.getElements());
+  }
 }
