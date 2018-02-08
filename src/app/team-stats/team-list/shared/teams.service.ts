@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Team } from './team.model';
 import { Player, ForwardPosition } from './../../../player-technician/player-list/shared/player.model';
-import { Technician } from './../../../player-technician/technician-list/shared/technician-staff.model';
+import { Technician, TechnicalStaffRoles } from './../../../player-technician/technician-list/shared/technician-staff.model';
 import { CrudList } from './../../../shared/crud-list';
 
 @Injectable()
@@ -49,6 +49,7 @@ export class TeamsService extends CrudList<Team> {
     this.elements.push(germanyTeam);
 
     this.initFakePlayers();
+    this.initFakeTechnicians();
   }
 
   /**
@@ -76,10 +77,24 @@ export class TeamsService extends CrudList<Team> {
       new Date(1920, 2, 8),
       'assets/img/fakeTeams/germany/player1.jpg',
       7,
-      ForwardPosition.winger
+      ForwardPosition.winger,
+      true
     );
 
     this.getElements()[1].players.newElement(player1Germany);
   }
 
+  private initFakeTechnicians() {
+    // Italy Only
+    const technician1Italy = new Technician(
+      this.getElements()[1],
+      'Technical',
+      'Man',
+      new Date(1920, 2, 8),
+      'Venezuelan',
+      TechnicalStaffRoles.Medic
+    );
+
+    this.getElements()[0].technician.newElement(technician1Italy);
+  }
 }

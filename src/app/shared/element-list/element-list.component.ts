@@ -28,6 +28,11 @@ export class ElementListComponent implements OnInit {
   @Input() icon: string;
 
   /**
+   * The type of element that we are rendering
+   */
+  @Input() elementType: string;
+
+  /**
    * Event when clicking an element of the list
    */
   @Output() actionOnItem: EventEmitter<Team | Player | Technician>;
@@ -63,24 +68,21 @@ export class ElementListComponent implements OnInit {
    * @param index index of the element to get
    */
   getImage(index: number) {
-    // The element to get the image
     const element = this.list[index];
 
-    // Teams
-    if (Team.isATeam(<Team> element)) {
-      return (<Team>element).flag;
-    }
+    // In case that we are rendering....
+    switch (this.elementType) {
+      // Teams
+      case Team.name:
+        return (<Team>element).flag;
 
-    // Player
-    if (this.isPlayer()) {
-      return (<Player>this.list[index]).picture;
-    }
+        // Players
+      case Player.name:
+        return (<Player>element).picture;
 
-    // TODO modify to adopt classes
-    // Technician
-    if (this.isTechnician()) {
-      // TODO find a default profile picture
-      return '';
+      // Technician
+      case Technician.name:
+        return 'assets/img/default-profile.png';
     }
   }
 
@@ -88,21 +90,26 @@ export class ElementListComponent implements OnInit {
    * Function to open a dialog with the intentions to create a new element
    */
   newElementModal() {
-    // just to know the type of element managed here
-    const currentElementType = this.list[0];
-
     // To set the type of element. Will verify the type of element and will create a
     // new element of that type
     let emptyElement;
 
-    // Set the New element as a Team
-    if (Team.isATeam(<Team> currentElementType)) {
-      emptyElement = new Team();
-    }
+    // In case that we are rendering....
+    switch (this.elementType) {
+      // Teams
+      case Team.name:
+        emptyElement = new Team();
+        break;
 
-    // Set the New element as a player
-    if (Player.isAPlayer(<Player> currentElementType)) {
-      emptyElement = new Player(this.teamsService.currentTeamEdited);
+      // Players
+      case Player.name:
+        emptyElement = new Player(this.teamsService.currentTeamEdited);
+        break;
+
+      // Technician
+      case Technician.name:
+        emptyElement = new Technician(this.teamsService.currentTeamEdited);
+        break;
     }
 
     // Open the dialog with the new empty element
@@ -132,25 +139,4 @@ export class ElementListComponent implements OnInit {
     this.actionOnItem.emit(element);
   }
 
-  /**
-   * Function to know if the element treated here is a Team
-   */
-  private isTeam(): boolean {
-    return this.list[0] instanceof Team;
-  }
-
-  /**
-   * Function to know if the element treated here is a Player
-   */
-  private isPlayer(): boolean {
-    return this.list[0] instanceof Player;
-  }
-
-  /**
-   * Function to know if the element treated here is a Technician
-   */
-  private isTechnician(): boolean {
-    // TODO pass to class Technician
-    return !!(<Technician>this.list[0]).role;
-  }
 }

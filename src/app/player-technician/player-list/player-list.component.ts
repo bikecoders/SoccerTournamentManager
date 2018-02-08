@@ -21,9 +21,15 @@ export class PlayerListComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.teamsService);
     // make a copy of the teams
     this.playersList = this.teamsService.currentTeamEdited.players.getElements();
+  }
+
+  /**
+   * Return type of element of this list
+   */
+  getType(): string {
+    return Player.name;
   }
 
 }
