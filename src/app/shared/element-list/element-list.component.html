@@ -3,9 +3,9 @@
 <!-- list of elements -->
 <ng-template #listContent>
   <mat-nav-list>
-    <a mat-list-item *ngFor="let element of list; let i = index;" (click)="clickOnItem(element)" aria-label="Edit this element">
-      <img matListAvatar src="{{getImage(i)}}" alt="picture">
-      <h3 matLine> {{getName(i)}} </h3>
+    <a mat-list-item *ngFor="let element of list" (click)="clickOnItem(element)" aria-label="Edit this element">
+      <img matListAvatar src="{{getImage(element)}}" alt="picture">
+      <h3 matLine> {{getName(element)}} </h3>
       <span matLine class="mat-caption"> {{getAdditionalInfo(element)}} </span>
     </a>
   </mat-nav-list>

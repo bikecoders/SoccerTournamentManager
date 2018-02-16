@@ -57,21 +57,19 @@ export class ElementListComponent implements OnInit {
    * Get the name of the element. All our structures has name so me don't
    * need to check what type of element is
    *
-   * @param index index of the element to get
+   * @param {Team | Player | Technician} element element from the list to extract the name
    */
-  getName(index: number) {
-    return this.list[index].name;
+  getName(element: Team | Player | Technician) {
+    return element.name;
   }
 
   /**
    * Get the image of the element.
    * We need to check what type of element is to know what attribute access
    *
-   * @param index index of the element to get
+   * @param {Team | Player | Technician} element element from the list to extract the image
    */
-  getImage(index: number) {
-    const element = this.list[index];
-
+  getImage(element: Team | Player | Technician) {
     // In case that we are rendering....
     switch (this.elementType) {
       // Teams
