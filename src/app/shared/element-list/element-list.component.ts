@@ -89,6 +89,33 @@ export class ElementListComponent implements OnInit {
   }
 
   /**
+   * Get additional info of the element.
+   *
+   * In case of Team return players and technicians players
+   * In case of Players return its number and position
+   * In case of Technicians return its nationality and role
+   *
+   * @param {Team | Player | Technician} element element from the list to extract the info
+   */
+  getAdditionalInfo(element: Team | Player | Technician) {
+    // In case that we are rendering....
+    switch (this.elementType) {
+      // Teams
+      case Team.name:
+        return `Players: ${(<Team>element).players.getElements().length} - Technicians: ${(<Team>element).technician.getElements().length}`;
+
+      // Players
+      case Player.name:
+        return `${(<Player>element).number} - ${(<Player>element).position}`;
+
+      // Technician
+      case Technician.name:
+        return `${(<Technician>element).nationality} - ${(<Technician>element).role}`;
+    }
+  }
+
+
+  /**
    * Function to open a dialog with the intentions to create a new element
    */
   newElementModal() {
