@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,14 +9,18 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild('sidenav') sidenav: MatSidenav;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   goToStats () {
-    // Navigate
-    this.router.navigateByUrl('stats');
+    // Close the sidenav an then navigate to stats
+    this.sidenav.close().then(() => {
+      this.router.navigateByUrl('stats');
+    });
   }
 
 }
