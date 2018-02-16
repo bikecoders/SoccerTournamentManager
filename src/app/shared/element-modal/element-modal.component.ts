@@ -3,9 +3,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // Models
-import { Team } from './../../team-stats/team-list/shared/team.model';
-import { Player } from './../../player-technician/player-list/shared/player.model';
-import { Technician } from './../../player-technician/technician-list/shared/technician-staff.model';
+import { Technician } from './../../staff/technicians/shared/technician.model';
+import { Player } from './../../staff/players/shared/player.model';
+import { Team } from './../../teams/shared/team.model';
+
 
 @Component({
   selector: 'app-element-modal',

@@ -1,4 +1,4 @@
-import { Team } from './../../../team-stats/team-list/shared/team.model';
+import { Team } from './../../../teams/shared/team.model';
 import { Person } from './../../../shared/person.model';
 
 export class Player extends Person {

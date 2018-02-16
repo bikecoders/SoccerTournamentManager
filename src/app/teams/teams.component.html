@@ -1,0 +1,5 @@
+<div class="container">
+  <h1 class="mat-title">Teams of the Tournament</h1>
+  <h5 class="mat-subheading-1">To add players and technician staff click a team</h5>
+  <app-element-list [list]="teamList" icon="group_add" [elementType]="getType()" (actionOnItem)="editTeamStaff($event)"></app-element-list>
+</div>

@@ -2,13 +2,13 @@ import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TeamStatsComponent } from './team-stats/team-stats.component';
-import { PlayerTechnicianComponent } from './player-technician/player-technician.component';
+import { TeamsComponent } from './teams/teams.component';
+import { StaffComponent } from './staff/staff.component';
 
 const appRoutes: Routes = [
-  { path: 'edit-team', component: PlayerTechnicianComponent },
-  { path: 'home', component: TeamStatsComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'teams/staff', component: StaffComponent },
+  { path: 'teams', component: TeamsComponent },
+  { path: '', redirectTo: '/teams', pathMatch: 'full' },
   // { path: '**', component: PageNotFoundComponent }
 ];
 

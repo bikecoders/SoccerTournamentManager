@@ -1,14 +1,16 @@
-import { TeamsService } from './../../team-stats/team-list/shared/teams.service';
 import { ElementModalComponent } from './../element-modal/element-modal.component';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 // Material
 import { MatDialog } from '@angular/material/dialog';
 
+import { TeamsService } from '../../teams/shared/teams.service';
+
 // Models
-import { Player } from './../../player-technician/player-list/shared/player.model';
-import { Team } from './../../team-stats/team-list/shared/team.model';
-import { Technician } from './../../player-technician/technician-list/shared/technician-staff.model';
+import { Team } from '../../teams/shared/team.model';
+import { Player } from '../../staff/players/shared/player.model';
+import { Technician } from '../../staff/technicians/shared/technician.model';
+
 
 @Component({
   selector: 'app-element-list',

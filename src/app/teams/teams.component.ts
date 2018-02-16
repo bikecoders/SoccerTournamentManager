@@ -5,11 +5,11 @@ import { TeamsService } from './shared/teams.service';
 import { Team } from './shared/team.model';
 
 @Component({
-  selector: 'app-team-list',
-  templateUrl: './team-list.component.html',
-  styleUrls: ['./team-list.component.scss']
+  selector: 'app-teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.scss']
 })
-export class TeamListComponent implements OnInit {
+export class TeamsComponent implements OnInit {
 
   /**
    * The list of the teams
@@ -38,7 +38,7 @@ export class TeamListComponent implements OnInit {
     this.teamsService.setCurrentTeam(team);
 
     // Navigate
-    this.router.navigateByUrl('edit-team');
+    this.router.navigateByUrl('teams/staff');
   }
 
   /**

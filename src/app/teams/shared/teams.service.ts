@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { Team } from './team.model';
-import { Player, ForwardPosition } from './../../../player-technician/player-list/shared/player.model';
-import { Technician, TechnicalStaffRoles } from './../../../player-technician/technician-list/shared/technician-staff.model';
-import { CrudList } from './../../../shared/crud-list';
+import { Player, ForwardPosition } from './../../staff/players/shared/player.model';
+import { Technician, TechnicalStaffRoles } from './../../staff/technicians/shared/technician.model';
+import { CrudList } from './../../shared/crud-list';
 
 @Injectable()
 export class TeamsService extends CrudList<Team> {

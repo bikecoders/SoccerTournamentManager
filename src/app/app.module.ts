@@ -4,17 +4,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
-import { TeamStatsModule } from './team-stats/team-stats.module';
-import { PlayerTechnicianModule } from './player-technician/player-technician.module';
+import { StaffModule } from './staff/staff.module';
+
+import { TeamsComponent } from './teams/teams.component';
+import { TeamsService } from './teams/shared/teams.service';
+import { StatsComponent } from './stats/stats.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TeamsComponent,
+    StatsComponent
   ],
   imports: [
     AppRoutingModule,
@@ -24,11 +31,13 @@ import { PlayerTechnicianModule } from './player-technician/player-technician.mo
 
     // Material
     MatToolbarModule,
+    MatDividerModule,
 
-    TeamStatsModule,
-    PlayerTechnicianModule,
+    StaffModule,
   ],
-  providers: [],
+  providers: [
+    TeamsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

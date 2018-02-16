@@ -1,6 +1,6 @@
-import { CrudList } from './../../../shared/crud-list';
-import { Player, ForwardPosition } from './../../../player-technician/player-list/shared/player.model';
-import { Technician } from './../../../player-technician/technician-list/shared/technician-staff.model';
+import { Technician } from './../../staff/technicians/shared/technician.model';
+import { CrudList } from './../../shared/crud-list';
+import { Player, ForwardPosition } from '../../staff/players/shared/player.model';
 
 export class Team {
   /**

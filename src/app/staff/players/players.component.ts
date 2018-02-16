@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TeamsService } from './../../team-stats/team-list/shared/teams.service';
+import { TeamsService } from './../../teams/shared/teams.service';
 import { Player } from './shared/player.model';
 
 @Component({
-  selector: 'app-player-list',
-  templateUrl: './player-list.component.html',
-  styleUrls: ['./player-list.component.scss']
+  selector: 'app-players',
+  templateUrl: './players.component.html',
+  styleUrls: ['./players.component.scss']
 })
-export class PlayerListComponent implements OnInit {
+export class PlayersComponent implements OnInit {
 
   /**
    * The list of the players

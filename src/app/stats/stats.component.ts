@@ -1,6 +1,3 @@
-import { Player } from './../../player-technician/player-list/shared/player.model';
-import { Team } from './../team-list/shared/team.model';
-import { TeamsService } from './../team-list/shared/teams.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
@@ -8,6 +5,10 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/reduce';
+
+import { Player } from '../staff/players/shared/player.model';
+import { Team } from '../teams/shared/team.model';
+import { TeamsService } from '../teams/shared/teams.service';
 
 @Component({
   selector: 'app-stats',
