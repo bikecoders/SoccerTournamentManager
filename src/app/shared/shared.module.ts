@@ -16,6 +16,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NavigateBackComponent } from './navigate-back/navigate-back.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSelectModule
   ],
   declarations: [ElementListComponent, ElementModalComponent, NavigateBackComponent],
   entryComponents: [ElementModalComponent],

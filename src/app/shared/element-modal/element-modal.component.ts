@@ -1,11 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
+
+// Material
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // Models
-import { Technician } from './../../staff/technicians/shared/technician.model';
-import { Player } from './../../staff/players/shared/player.model';
+import { Technician, getTechnicianRolesOptions } from './../../staff/technicians/shared/technician.model';
+import { Player, getPlayerPositionOptions } from './../../staff/players/shared/player.model';
 import { Team } from './../../teams/shared/team.model';
+import { NATIONALITIES } from './../nationalities-list';
 
 
 @Component({
@@ -14,6 +17,21 @@ import { Team } from './../../teams/shared/team.model';
   styleUrls: ['./element-modal.component.scss']
 })
 export class ElementModalComponent implements OnInit {
+
+  /**
+   * Array of objects with the player positions grouped
+   */
+  playerPositionOptions;
+
+  /**
+   * Array of technician roles
+   */
+  technicianRolesOptions;
+
+  /**
+   * Array of nationalities
+   */
+  nationalitiesList;
 
   /**
    * The constructor of the class
@@ -30,6 +48,17 @@ export class ElementModalComponent implements OnInit {
 
   ngOnInit() {
     console.log('New Element on modal', this.element );
+
+    // Get the player positions to generate the dropdown automatically
+    if (this.isPlayer()) {
+      this.playerPositionOptions = getPlayerPositionOptions();
+    }
+
+    // Get the technician roles to generate the dropdown automatically
+    if (this.isTechnician()) {
+      this.technicianRolesOptions = getTechnicianRolesOptions();
+      this.nationalitiesList = NATIONALITIES;
+    }
   }
 
   /**

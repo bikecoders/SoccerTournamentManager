@@ -57,21 +57,19 @@ export class ElementListComponent implements OnInit {
    * Get the name of the element. All our structures has name so me don't
    * need to check what type of element is
    *
-   * @param index index of the element to get
+   * @param {Team | Player | Technician} element element from the list to extract the name
    */
-  getName(index: number) {
-    return this.list[index].name;
+  getName(element: Team | Player | Technician) {
+    return element.name;
   }
 
   /**
    * Get the image of the element.
    * We need to check what type of element is to know what attribute access
    *
-   * @param index index of the element to get
+   * @param {Team | Player | Technician} element element from the list to extract the image
    */
-  getImage(index: number) {
-    const element = this.list[index];
-
+  getImage(element: Team | Player | Technician) {
     // In case that we are rendering....
     switch (this.elementType) {
       // Teams
@@ -87,6 +85,33 @@ export class ElementListComponent implements OnInit {
         return 'assets/img/default-profile.png';
     }
   }
+
+  /**
+   * Get additional info of the element.
+   *
+   * In case of Team return players and technicians players
+   * In case of Players return its number and position
+   * In case of Technicians return its nationality and role
+   *
+   * @param {Team | Player | Technician} element element from the list to extract the info
+   */
+  getAdditionalInfo(element: Team | Player | Technician) {
+    // In case that we are rendering....
+    switch (this.elementType) {
+      // Teams
+      case Team.name:
+        return `Players: ${(<Team>element).players.getElements().length} - Technicians: ${(<Team>element).technician.getElements().length}`;
+
+      // Players
+      case Player.name:
+        return `${(<Player>element).number} - ${(<Player>element).position}`;
+
+      // Technician
+      case Technician.name:
+        return `${(<Technician>element).nationality} - ${(<Technician>element).role}`;
+    }
+  }
+
 
   /**
    * Function to open a dialog with the intentions to create a new element

@@ -82,3 +82,54 @@ export enum ForwardPosition {
   secondStriker = 'Second Striker',
   winger = 'Winger'
 }
+
+/**
+ * Get all the possible player positions as an array of objects
+ *
+ * Useful to populate the dropdown options when creating a new player
+ *
+ * @returns {array} Array of objects with the positions grouped
+ */
+export function getPlayerPositionOptions() {
+  const playerPositionOptions = [
+    {
+      name: 'Goal Keeper',
+      positions: ['Goal Keeper']
+    },
+    {
+      name: 'Defender',
+      positions: []
+    },
+    {
+      name: 'Midfield',
+      positions: []
+    },
+    {
+      name: 'Forward',
+      positions: []
+    }
+  ];
+
+  // Add Defender positions
+  for (const position in DefenderPosition) {
+    if (DefenderPosition.hasOwnProperty(position)) {
+      playerPositionOptions[1].positions.push(DefenderPosition[position]);
+    }
+  }
+
+  // Add Midfield positions
+  for (const position in MidfielderPosition) {
+    if (MidfielderPosition.hasOwnProperty(position)) {
+      playerPositionOptions[2].positions.push(MidfielderPosition[position]);
+    }
+  }
+
+  // Add Forward positions
+  for (const position in ForwardPosition) {
+    if (ForwardPosition.hasOwnProperty(position)) {
+      playerPositionOptions[3].positions.push(ForwardPosition[position]);
+    }
+  }
+
+  return playerPositionOptions;
+}
