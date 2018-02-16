@@ -9,6 +9,7 @@ import { SharedModule } from './../shared/shared.module';
 
 // Material
 import { MatTabsModule } from '@angular/material/tabs';
+import { TeamSelectedGuard } from './shared/team-selected.guard';
 
 @NgModule({
   imports: [
@@ -21,5 +22,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     PlayersComponent,
     TechniciansComponent
   ],
+  providers: [TeamSelectedGuard],
 })
 export class StaffModule { }
