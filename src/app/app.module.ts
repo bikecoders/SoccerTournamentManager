@@ -5,23 +5,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
-
 import { StaffModule } from './staff/staff.module';
 
 import { TeamsComponent } from './teams/teams.component';
 import { TeamsService } from './teams/shared/teams.service';
 import { StatsComponent } from './stats/stats.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamsComponent,
-    StatsComponent
+    StatsComponent,
+    HomeComponent
   ],
   imports: [
     AppRoutingModule,
@@ -30,8 +34,12 @@ import { StatsComponent } from './stats/stats.component';
     SharedModule,
 
     // Material
+    MatListModule,
     MatToolbarModule,
     MatDividerModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
 
     StaffModule,
   ],
