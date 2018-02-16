@@ -46,3 +46,24 @@ export enum TechnicalStaffRoles {
   Medic = 'Medic',
   preparer = 'Preparer',
 }
+
+
+/**
+ * Get all the possible technician roles as an array of strings
+ *
+ * Useful to populate the roles dropdown when creating a new technician
+ *
+ * @returns {array} Array of strings with all the technician roles
+ */
+export function getTechnicianRolesOptions() {
+  const technicianRolesOptions = [];
+
+  // Add roles
+  for (const position in TechnicalStaffRoles) {
+    if (TechnicalStaffRoles.hasOwnProperty(position)) {
+      technicianRolesOptions.push(TechnicalStaffRoles[position]);
+    }
+  }
+
+  return technicianRolesOptions;
+}
