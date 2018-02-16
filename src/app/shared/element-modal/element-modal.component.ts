@@ -8,6 +8,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Technician, getTechnicianRolesOptions } from './../../staff/technicians/shared/technician.model';
 import { Player, getPlayerPositionOptions } from './../../staff/players/shared/player.model';
 import { Team } from './../../teams/shared/team.model';
+import { NATIONALITIES } from './../nationalities-list';
 
 
 @Component({
@@ -23,9 +24,14 @@ export class ElementModalComponent implements OnInit {
   playerPositionOptions;
 
   /**
-   * Array technician roles
+   * Array of technician roles
    */
   technicianRolesOptions;
+
+  /**
+   * Array of nationalities
+   */
+  nationalitiesList;
 
   /**
    * The constructor of the class
@@ -51,7 +57,7 @@ export class ElementModalComponent implements OnInit {
     // Get the technician roles to generate the dropdown automatically
     if (this.isTechnician()) {
       this.technicianRolesOptions = getTechnicianRolesOptions();
-      console.log('roles:', this.technicianRolesOptions);
+      this.nationalitiesList = NATIONALITIES;
     }
   }
 
