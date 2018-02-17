@@ -28,7 +28,7 @@ export class TechniciansComponent implements OnInit {
    * Return type of element of this list
    */
   getType(): string {
-    return Technician.name;
+    return 'Technician';
   }
 
 }
