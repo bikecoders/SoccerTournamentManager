@@ -1,0 +1,25 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="push" >
+
+    <mat-nav-list>
+      <h3 matSubheader>Menu</h3>
+      <mat-list-item (click)="goToStats()" >
+        <mat-icon matListIcon>poll</mat-icon>
+        <h4 matLine>Stats</h4>
+        <p matLine> Stats for the Tournament </p>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()" aria-label="Click to open a menu">menu</mat-icon>
+      </button>
+      Soccer Tournament Manager
+    </mat-toolbar>
+
+    <app-teams></app-teams>
+  </mat-sidenav-content>
+</mat-sidenav-container>
