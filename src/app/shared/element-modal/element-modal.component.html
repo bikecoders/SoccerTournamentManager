@@ -37,7 +37,14 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [(ngModel)]="element.position" placeholder="Player Position">
+    <mat-select placeholder="Player Position" [(ngModel)]="element.position">
+      <mat-option>-- None --</mat-option>
+      <mat-optgroup *ngFor="let group of playerPositionOptions" [label]="group.name">
+        <mat-option *ngFor="let position of group.positions" [value]="position">
+          {{ position }}
+        </mat-option>
+      </mat-optgroup>
+    </mat-select>
   </mat-form-field>
 
   <mat-checkbox [(ngModel)]="element.titular">is Titular?</mat-checkbox>
@@ -59,11 +66,17 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [(ngModel)]="element.nationality" placeholder="Nationality">
+    <mat-select placeholder="Nationality" [(ngModel)]="element.nationality">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let nationality of nationalitiesList" [value]="nationality">{{nationality}}</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [(ngModel)]="element.role" placeholder="role">
+    <mat-select placeholder="Technician Role" [(ngModel)]="element.role">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let role of technicianRolesOptions" [value]="role">{{role}}</mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 

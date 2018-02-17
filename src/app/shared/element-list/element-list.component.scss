@@ -1,5 +1,9 @@
 button {
-  display: block;
-  margin-left: auto;
-  margin-right: 5vw;
+  bottom: 24px;
+  position: fixed;
+  right: 24px;
+}
+
+span.mat-caption {
+  color: #757575;
 }

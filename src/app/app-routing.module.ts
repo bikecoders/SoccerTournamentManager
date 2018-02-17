@@ -2,13 +2,16 @@ import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TeamStatsComponent } from './team-stats/team-stats.component';
-import { PlayerTechnicianComponent } from './player-technician/player-technician.component';
+import { StaffComponent } from './staff/staff.component';
+import { HomeComponent } from './home/home.component';
+import { StatsComponent } from './stats/stats.component';
+import { TeamSelectedGuard } from './staff/shared/team-selected.guard';
 
 const appRoutes: Routes = [
-  { path: 'edit-team', component: PlayerTechnicianComponent },
-  { path: 'home', component: TeamStatsComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'teams', component: HomeComponent},
+  { path: 'stats', component: StatsComponent},
+  { path: 'teams/staff', component: StaffComponent, canActivate: [TeamSelectedGuard] },
+  { path: '', redirectTo: '/teams', pathMatch: 'full' },
   // { path: '**', component: PageNotFoundComponent }
 ];
 
