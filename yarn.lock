@@ -4456,6 +4456,10 @@ netmask@~1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/netmask/-/netmask-1.0.6.tgz#20297e89d86f6f6400f250d9f4f6b4c1945fcd35"
 
+ng-gist@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ng-gist/-/ng-gist-1.0.2.tgz#c877eed9b185f780cfcdb09e0cfa314f6d049983"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"

@@ -23,7 +23,7 @@ export class StatsComponent implements OnInit {
   youngestPlayer: Player;
 
   /**
-   * Variable to store the youngest player asynchronously
+   * Variable to store the oldest player asynchronously
    */
   oldestPlayer: Player;
 
@@ -80,7 +80,7 @@ export class StatsComponent implements OnInit {
   /**
    * Return how many players are registered
    */
-  howManyPlayersWillPlay(): number {
+  howManyPlayersAreRegistered(): number {
     // Iterate teams
     return this.teamsService.getElements()
     // Return the amount of players of a team

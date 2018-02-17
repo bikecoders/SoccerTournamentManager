@@ -9,6 +9,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+import { NgGistModule } from 'ng-gist';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +35,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+    NgGistModule,
 
     // Material
     MatListModule,
@@ -40,6 +44,7 @@ import { HomeComponent } from './home/home.component';
     MatIconModule,
     MatSidenavModule,
     MatButtonModule,
+    MatExpansionModule,
 
     StaffModule,
   ],
