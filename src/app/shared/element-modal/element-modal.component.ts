@@ -19,6 +19,16 @@ import { NATIONALITIES } from './../nationalities-list';
 export class ElementModalComponent implements OnInit {
 
   /**
+   * The element that is being created
+   */
+  element: Team | Player | Technician | any;
+
+  /**
+   * The element type
+   */
+  elementType: string;
+
+  /**
    * Array of objects with the player positions grouped
    */
   playerPositionOptions;
@@ -43,43 +53,32 @@ export class ElementModalComponent implements OnInit {
    */
   constructor(
     private dialogRef: MatDialogRef<ElementModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public element: Team | Player | Technician | any
-  ) { }
+    // The element to render/create
+    @Inject(MAT_DIALOG_DATA) data: any
+    // The type of element that we are creating
+  ) {
+    // Set element type
+    this.elementType = data.elementType;
+
+    // Set element
+    this.element = data.element;
+  }
 
   ngOnInit() {
     console.log('New Element on modal', this.element );
 
-    // Get the player positions to generate the dropdown automatically
-    if (this.isPlayer()) {
-      this.playerPositionOptions = getPlayerPositionOptions();
+    // The load the options of the dropdown
+    switch (this.elementType) {
+
+      case 'Player':
+        this.playerPositionOptions = getPlayerPositionOptions();
+        break;
+
+      case 'Technician':
+        this.technicianRolesOptions = getTechnicianRolesOptions();
+        this.nationalitiesList = NATIONALITIES;
+        break;
     }
-
-    // Get the technician roles to generate the dropdown automatically
-    if (this.isTechnician()) {
-      this.technicianRolesOptions = getTechnicianRolesOptions();
-      this.nationalitiesList = NATIONALITIES;
-    }
-  }
-
-  /**
-   * The element is a TEAM instance?
-   */
-  isTeam() {
-    return this.element instanceof Team;
-  }
-
-  /**
-   * The element is a Player instance?
-   */
-  isPlayer() {
-    return this.element instanceof Player;
-  }
-
-  /**
-   * The element is a Technician instance?
-   */
-  isTechnician() {
-    return this.element instanceof Technician;
   }
 
   /**
