@@ -73,15 +73,15 @@ export class ElementListComponent implements OnInit {
     // In case that we are rendering....
     switch (this.elementType) {
       // Teams
-      case Team.name:
+      case 'Team':
         return (<Team>element).flag;
 
         // Players
-      case Player.name:
+      case 'Player':
         return (<Player>element).picture;
 
       // Technician
-      case Technician.name:
+      case 'Technician':
         return 'assets/img/default-profile.png';
     }
   }
@@ -99,15 +99,15 @@ export class ElementListComponent implements OnInit {
     // In case that we are rendering....
     switch (this.elementType) {
       // Teams
-      case Team.name:
+      case 'Team':
         return `Players: ${(<Team>element).players.getElements().length} - Technicians: ${(<Team>element).technician.getElements().length}`;
 
       // Players
-      case Player.name:
+      case 'Player':
         return `${(<Player>element).number} - ${(<Player>element).position}`;
 
       // Technician
-      case Technician.name:
+      case 'Technician':
         return `${(<Technician>element).nationality} - ${(<Technician>element).role}`;
     }
   }
@@ -124,24 +124,29 @@ export class ElementListComponent implements OnInit {
     // In case that we are rendering....
     switch (this.elementType) {
       // Teams
-      case Team.name:
+      case 'Team':
         emptyElement = new Team();
         break;
 
       // Players
-      case Player.name:
+      case 'Player':
         emptyElement = new Player(this.teamsService.currentTeamEdited);
         break;
 
       // Technician
-      case Technician.name:
+      case 'Technician':
         emptyElement = new Technician(this.teamsService.currentTeamEdited);
         break;
     }
 
+    const dataToDialog = {
+      element: emptyElement,
+      elementType: this.elementType
+    };
+
     // Open the dialog with the new empty element
     const dialogRef = this.dialog.open(ElementModalComponent, {
-      data: emptyElement,
+      data: dataToDialog
     });
 
     // When the dialog is closed
