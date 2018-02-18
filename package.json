@@ -7,7 +7,7 @@
     "start": "ng serve --host 0.0.0.0 --aot",
     "build": "ng build --prod",
     "test-pwa": "http-server ./dist -p 8080",
-    "build-gh-pages": "ng build --prod --base-href \"https://bikecoders.github.io/football-managener/\"",
+    "build-gh-pages": "ng build --prod --base-href '/football-managener/'",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
