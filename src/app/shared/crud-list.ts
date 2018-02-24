@@ -43,6 +43,11 @@ export class CrudList<T> {
    *        The element edited
    */
   editElement(index: number, editedElement: T) {
+    // If the index doesn't exist throw an error
+    if (index > this.elements.length - 1) {
+      throw new RangeError('Index doesn\'t exist');
+    }
+
     this.elements[index] = editedElement;
   }
 
@@ -54,6 +59,11 @@ export class CrudList<T> {
    *
    */
   deleteElement(index: number) {
+    // If the index doesn't exist throw an error
+    if (index > this.elements.length - 1) {
+      throw new RangeError('Index doesn\'t exist');
+    }
+
     this.elements.splice(index, 1);
   }
 }
