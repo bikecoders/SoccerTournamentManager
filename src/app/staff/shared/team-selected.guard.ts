@@ -16,9 +16,7 @@ export class TeamSelectedGuard implements CanActivate {
 
   }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
 
     const isTeamSelected = !!this.teamsService.currentTeamEdited;
 
