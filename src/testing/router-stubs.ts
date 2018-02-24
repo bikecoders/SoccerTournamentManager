@@ -26,6 +26,13 @@ export class RouterLinkStubDirective {
 export class RouterOutletStubComponent { }
 */
 
+export class LocationStub {
+  /**
+   * Navigates back in the platform's history.
+   */
+  back(): void {}
+}
+
 @Injectable()
 export class RouterStub {
   /**
