@@ -14,7 +14,7 @@ describe('TeamsService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should current team edited be falsy', inject([TeamsService], (service: TeamsService) => {
+  it('should current team edited be falsy, nothing in the beginning', inject([TeamsService], (service: TeamsService) => {
     expect(service.currentTeamEdited).toBeFalsy();
   }));
 
@@ -25,6 +25,11 @@ describe('TeamsService', () => {
 
     expect(service.currentTeamEdited).toBeTruthy('should have something');
     expect(Object.is(currentTeam, service.currentTeamEdited)).toBeTruthy('Should be the same team');
+  }));
+
+  it('should clear the current team', inject([TeamsService], (service: TeamsService) => {
+    service.clearCurrentTeam();
+    expect(service.currentTeamEdited).toBeFalsy();
   }));
 });
 
