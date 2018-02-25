@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 import { RouterStub } from '../../testing/router-stubs';
+import { ElementListStubComponent } from '../../testing';
 
 import { TeamsComponent } from './teams.component';
 import { Team } from './shared/team.model';
@@ -10,43 +10,6 @@ import { Player } from '../staff/players/shared/player.model';
 import { Technician } from '../staff/technicians/shared/technician.model';
 import { TeamsService } from './shared/teams.service';
 import { Router } from '@angular/router';
-
-/**
- * Stub for element list component
- */
-@Component({
-  selector: 'app-element-list',
-  template: ''
-})
-class ElementListStubComponent {
-  /**
-   * List of elements to show
-   */
-  @Input() list: Array<Team | Player | Technician>;
-
-  /**
-   * Material Icon ID to render
-   */
-  @Input() icon: string;
-
-  /**
-   * The type of element that we are rendering
-   */
-  @Input() elementType: string;
-
-  /**
-   * Event when clicking an element of the list
-   */
-  @Output() actionOnItem: EventEmitter<Team | Player | Technician>;
-
-  constructor() {
-    this.actionOnItem = new EventEmitter<Team | Player | Technician>();
-  }
-
-  clickOn(index = 0) {
-    this.actionOnItem.emit( this.list[index] );
-  }
-}
 
 describe('TeamsComponent', () => {
   let component: TeamsComponent;
