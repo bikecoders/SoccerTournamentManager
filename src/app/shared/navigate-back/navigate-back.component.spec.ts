@@ -42,7 +42,7 @@ describe('NavigateBackComponent', () => {
     component = fixture.componentInstance;
 
     // Location actually injected into the component
-    const locationService = fixture.debugElement.injector.get(Location);
+    const locationService = fixture.debugElement.injector.get(Location) as LocationStub;
     spyLocationBack = spyOn(locationService, 'back');
 
     fixture.detectChanges();
