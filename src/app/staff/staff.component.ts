@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { TeamsService } from '../teams/shared/teams.service';
 
@@ -7,7 +7,7 @@ import { TeamsService } from '../teams/shared/teams.service';
   templateUrl: './staff.component.html',
   styleUrls: ['./staff.component.scss']
 })
-export class StaffComponent implements OnInit {
+export class StaffComponent implements OnInit, OnDestroy {
 
   /**
    * Store the current team name to render it in the nav bar
@@ -20,6 +20,10 @@ export class StaffComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.teamsService.clearCurrentTeam();
   }
 
 }

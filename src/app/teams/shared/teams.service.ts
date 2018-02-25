@@ -31,6 +31,13 @@ export class TeamsService extends CrudList<Team> {
   }
 
   /**
+   * Clear the current team edited, useful when navigated back
+   */
+  clearCurrentTeam() {
+    this.currentTeamEdited = null;
+  }
+
+  /**
    * Init the service with some random values
    */
   private initFakeData() {

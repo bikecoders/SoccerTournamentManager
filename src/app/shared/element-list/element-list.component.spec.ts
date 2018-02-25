@@ -1,3 +1,4 @@
+/*
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ElementListComponent } from './element-list.component';
@@ -23,3 +24,4 @@ describe('ElementListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/
