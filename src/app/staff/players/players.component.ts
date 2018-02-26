@@ -29,7 +29,7 @@ export class PlayersComponent implements OnInit {
    * Return type of element of this list
    */
   getType(): string {
-    return Player.name;
+    return 'Player';
   }
 
 }

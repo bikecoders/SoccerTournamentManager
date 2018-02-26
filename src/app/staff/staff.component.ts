@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { TeamsService } from '../teams/shared/teams.service';
+
 @Component({
   selector: 'app-staff',
   templateUrl: './staff.component.html',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StaffComponent implements OnInit {
 
-  constructor() { }
+  /**
+   * Store the current team name to render it in the nav bar
+   */
+  public currentTeamName: string;
+
+  constructor(private teamsService: TeamsService) {
+    // Get the current team name
+    this.currentTeamName = this.teamsService.currentTeamEdited.name;
+  }
 
   ngOnInit() {
   }

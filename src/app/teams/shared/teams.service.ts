@@ -26,6 +26,7 @@ export class TeamsService extends CrudList<Team> {
    * @param team The team that is being edited
    */
   setCurrentTeam(team: Team) {
+    console.log('team selected', team);
     this.currentTeamEdited = team;
   }
 

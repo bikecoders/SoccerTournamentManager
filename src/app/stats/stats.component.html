@@ -1,25 +1,100 @@
-<h1 class="mat-title">How Many TEAMS are Registered?</h1>
-<p class="mat-subheading">{{howManyTeamsAreRegistered()}}</p>
-<mat-divider></mat-divider>
+<app-navigate-back> Stats </app-navigate-back>
 
-<h1 class="mat-title">How Many PLAYERS Will Play?</h1>
-<p class="mat-subheading">{{howManyPlayersWillPlay()}}</p>
-<mat-divider></mat-divider>
+<div class="container">
 
-<h1 class="mat-title">Who is the YOUNGEST Player?</h1>
-<p class="mat-subheading">Name - {{youngestPlayer.name}}</p>
-<p class="mat-subheading">Birth Date - {{youngestPlayer.birthDate | date}}</p>
-<mat-divider></mat-divider>
+  <h1 class="mat-title">Stats of the Tournament</h1>
 
-<h1 class="mat-title">Who is the OLDEST Player?</h1>
-<p class="mat-subheading">Name - {{oldestPlayer.name}}</p>
-<p class="mat-subheading">Birth Date - {{oldestPlayer.birthDate | date}}</p>
-<mat-divider></mat-divider>
+  <mat-accordion>
+    <!-- Question 1 -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Teams Registered
+        </mat-panel-title>
+        <mat-panel-description>
+          {{howManyTeamsAreRegistered()}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
 
-<h1 class="mat-title">How Many NON Titular Players Are?</h1>
-<p class="mat-subheading">{{nonTitularPlayers}}</p>
-<mat-divider></mat-divider>
+      <p class="mat-body-2">Code Used</p>
+      <ng-gist #gist userName="dianjuar" gistId="7dcf01a523dda0431cebfa04d79d67dc" fileName="stat1-teams-registered.ts"></ng-gist>
+    </mat-expansion-panel>
 
-<h1 class="mat-title">Average of Non Titular Players on Each Team?</h1>
-<p class="mat-subheading">{{AverageNonTitularPlayers}}</p>
-<mat-divider></mat-divider>
+    <!-- Question 2 -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Players Registered
+        </mat-panel-title>
+        <mat-panel-description>
+          {{howManyPlayersAreRegistered()}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <p class="mat-body-2">Code Used</p>
+      <ng-gist #gist userName="dianjuar" gistId="7dcf01a523dda0431cebfa04d79d67dc" fileName="stat2-players-registered.ts"></ng-gist>
+    </mat-expansion-panel>
+
+    <!-- Question 3 -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Youngest Player
+        </mat-panel-title>
+        <mat-panel-description>
+          {{youngestPlayer.name}} - {{youngestPlayer.birthDate | date}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <p class="mat-body-2">Code Used</p>
+      <ng-gist #gist userName="dianjuar" gistId="7dcf01a523dda0431cebfa04d79d67dc" fileName="stat3-youngest-player.ts"></ng-gist>
+    </mat-expansion-panel>
+
+    <!-- Question 4 -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Oldest Player
+        </mat-panel-title>
+        <mat-panel-description>
+          {{oldestPlayer.name}} - {{oldestPlayer.birthDate | date}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <p class="mat-body-2">Code Used</p>
+      <ng-gist #gist userName="dianjuar" gistId="7dcf01a523dda0431cebfa04d79d67dc" fileName="stat4-oldest-player.ts"></ng-gist>
+    </mat-expansion-panel>
+
+    <!-- Question 5 -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Non Titular Players
+        </mat-panel-title>
+        <mat-panel-description>
+          {{nonTitularPlayers}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <p class="mat-body-2">Code Used</p>
+      <ng-gist #gist userName="dianjuar" gistId="7dcf01a523dda0431cebfa04d79d67dc" fileName="stat5-non-titular-players.ts"></ng-gist>
+    </mat-expansion-panel>
+
+    <!-- Question 6 -->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Average of Non Titular Players on Each Team
+        </mat-panel-title>
+        <mat-panel-description>
+          {{AverageNonTitularPlayers}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <p class="mat-body-2">Code Used</p>
+      <ng-gist #gist userName="dianjuar" gistId="7dcf01a523dda0431cebfa04d79d67dc" fileName="stat6-average-non-titular-players-each-team.ts"></ng-gist>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+</div>

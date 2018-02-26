@@ -1,84 +1,90 @@
 <!-- render team template -->
-<div *ngIf="isTeam()">
-  <mat-form-field>
-    <input matInput [(ngModel)]="element.name" placeholder="Name">
-  </mat-form-field>
 
-  <mat-form-field>
-    <input matInput [(ngModel)]="element.flag" placeholder="Flag Picture URL">
-  </mat-form-field>
+<div [ngSwitch]="elementType">
 
-  <mat-form-field>
-    <input matInput [(ngModel)]="element.shield" placeholder="Shield Picture URL">
-  </mat-form-field>
-</div>
+  <div *ngSwitchCase="'Team'">
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.name" placeholder="Name">
+    </mat-form-field>
 
-<div *ngIf="isPlayer()">
-  <mat-form-field>
-    <input matInput [(ngModel)]="element.name" placeholder="Name">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.flag" placeholder="Flag Picture URL">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput [(ngModel)]="element.surname" placeholder="Surname">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.shield" placeholder="Shield Picture URL">
+    </mat-form-field>
+  </div>
 
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="element.birthDate" placeholder="Choose a Birth Date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+  <div *ngSwitchCase="'Player'">
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.name" placeholder="Name">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput [(ngModel)]="element.picture" placeholder="Picture URL">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.surname" placeholder="Surname">
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="number" matInput [(ngModel)]="element.number" placeholder="Player Number">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="element.birthDate" placeholder="Choose a Birth Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Player Position" [(ngModel)]="element.position">
-      <mat-option>-- None --</mat-option>
-      <mat-optgroup *ngFor="let group of playerPositionOptions" [label]="group.name">
-        <mat-option *ngFor="let position of group.positions" [value]="position">
-          {{ position }}
-        </mat-option>
-      </mat-optgroup>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.picture" placeholder="Picture URL">
+    </mat-form-field>
 
-  <mat-checkbox [(ngModel)]="element.titular">is Titular?</mat-checkbox>
-</div>
+    <mat-form-field>
+      <input type="number" matInput [(ngModel)]="element.number" placeholder="Player Number">
+    </mat-form-field>
 
-<div *ngIf="isTechnician()">
-  <mat-form-field>
-    <input matInput [(ngModel)]="element.name" placeholder="Name">
-  </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Player Position" [(ngModel)]="element.position">
+        <mat-option>-- None --</mat-option>
+        <mat-optgroup *ngFor="let group of playerPositionOptions" [label]="group.name">
+          <mat-option *ngFor="let position of group.positions" [value]="position">
+            {{ position }}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput [(ngModel)]="element.surname" placeholder="Surname">
-  </mat-form-field>
+    <mat-checkbox [(ngModel)]="element.titular">is Titular?</mat-checkbox>
+  </div>
 
-  <mat-form-field>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="element.birthDate" placeholder="Choose a Birth Date">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+  <div *ngSwitchCase="'Technician'">
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.name" placeholder="Name">
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Nationality" [(ngModel)]="element.nationality">
-      <mat-option>None</mat-option>
-      <mat-option *ngFor="let nationality of nationalitiesList" [value]="nationality">{{nationality}}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="element.surname" placeholder="Surname">
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-select placeholder="Technician Role" [(ngModel)]="element.role">
-      <mat-option>None</mat-option>
-      <mat-option *ngFor="let role of technicianRolesOptions" [value]="role">{{role}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="element.birthDate" placeholder="Choose a Birth Date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Nationality" [(ngModel)]="element.nationality">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let nationality of nationalitiesList" [value]="nationality">{{nationality}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Technician Role" [(ngModel)]="element.role">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let role of technicianRolesOptions" [value]="role">{{role}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div> <!-- ng switch -->
+
 
 <button mat-raised-button (click)="closeDialog()">CANCEL</button>
 <button mat-raised-button [mat-dialog-close]="element" color="primary">ADD</button>

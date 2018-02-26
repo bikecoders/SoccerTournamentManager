@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, AfterViewInit, ElementRef } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -9,13 +9,16 @@ import 'rxjs/add/operator/reduce';
 import { Player } from '../staff/players/shared/player.model';
 import { Team } from '../teams/shared/team.model';
 import { TeamsService } from '../teams/shared/teams.service';
+import { NgGistComponent } from 'ng-gist';
 
 @Component({
   selector: 'app-stats',
   templateUrl: './stats.component.html',
   styleUrls: ['./stats.component.scss']
 })
-export class StatsComponent implements OnInit {
+export class StatsComponent implements OnInit, AfterViewInit {
+
+  @ViewChildren('gist') allGist: QueryList<NgGistComponent>;
 
   /**
    * Variable to store the youngest player asynchronously
@@ -23,7 +26,7 @@ export class StatsComponent implements OnInit {
   youngestPlayer: Player;
 
   /**
-   * Variable to store the youngest player asynchronously
+   * Variable to store the oldest player asynchronously
    */
   oldestPlayer: Player;
 
@@ -67,6 +70,19 @@ export class StatsComponent implements OnInit {
 
   }
 
+  ngAfterViewInit() {
+    // Resize all gist iframes to their content after they have been loaded.
+    this.allGist.forEach((gistComponent: NgGistComponent, index, AllGists: Array<NgGistComponent>) => {
+      // Get the native element Iframe
+      const iframe = gistComponent.gistIframe.nativeElement;
+
+      // When the iframe its loaded resize it to fit all the content that is inside
+      iframe.onload = () => {
+        iframe.style.height = iframe.contentWindow.document.body.scrollHeight + 'px';
+      };
+    });
+  }
+
   ngOnInit() {
   }
 
@@ -80,7 +96,7 @@ export class StatsComponent implements OnInit {
   /**
    * Return how many players are registered
    */
-  howManyPlayersWillPlay(): number {
+  howManyPlayersAreRegistered(): number {
     // Iterate teams
     return this.teamsService.getElements()
     // Return the amount of players of a team
